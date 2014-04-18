@@ -15,14 +15,27 @@ use FJ\MainBundle\Entity\Media;
 class MediaService
 {
     /**
+     * Import media from file
      * 
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
-     * @return null|Media
+     * @return null|Media Imported media
      */
     public function importFromFile(UploadedFile $file = null) {
-        return null;
+        if ($file === null) {
+            return null;
+        }
+        
+        $media = new Media();
+        
+        return $media;
     }
     
+    /**
+     * Get absolute path of a media
+     * 
+     * @param \FJ\MainBundle\Entity\Media $media
+     * @return string
+     */
     public function getAbsolutePath(Media $media)
     {
         return null;
