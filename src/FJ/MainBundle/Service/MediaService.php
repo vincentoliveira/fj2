@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class MediaService
 {
-    public function importFromFile(UploadedFile $file) {
+    public function importFromFile(UploadedFile $file = null) {
         return NULL;
     }
 }
