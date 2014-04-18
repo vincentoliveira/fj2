@@ -14,6 +14,23 @@ use FJ\MainBundle\Entity\Media;
  */
 class MediaService
 {
+
+    /**
+     * Entity Manager
+     * 
+     * @Inject("doctrine.orm.entity_manager")
+     * @var \Doctrine\ORM\EntityManager
+     */
+    public $em;
+
+    /**
+     * Kernel
+     * 
+     * @Inject("kernel")
+     * @var \Symfony\Component\HttpKernel\Kernel
+     */
+    public $kernel;
+    
     /**
      * Import media from file
      * 
@@ -25,8 +42,23 @@ class MediaService
             return null;
         }
         
-        $media = new Media();
+        // copy to upload dir with unique filename
+        $uploadDir = $this->getUploadDir();
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
         
+        $tmpPath = tempnam($uploadDir, '');
+        $dstPath = $tmpPath . $file->guessExtension();
+        copy($file->getPathName(), $dstPath);
+        unlink($tmpPath);
+        
+        $media = new Media();
+        $media->setPath(basename($dstPath));
+        
+        $this->em->persist($media);
+        $this->em->flush();
+
         return $media;
     }
     
@@ -38,6 +70,11 @@ class MediaService
      */
     public function getAbsolutePath(Media $media)
     {
-        return null;
+        return $this->getUploadDir() . $media->getPath();
+    }
+    
+    private function getUploadDir()
+    {
+        return $this->kernel->getRootDir() . '/../web/media/';
     }
 }

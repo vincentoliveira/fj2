@@ -16,12 +16,12 @@ class Media
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="string", length=15, nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+    
     /**
      * @var \DateTime
      *
