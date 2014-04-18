@@ -13,6 +13,6 @@ use JMS\DiExtraBundle\Annotation\Inject;
 class MediaService
 {
     public function importFromFile($file) {
-        return 0;
+        return NULL;
     }
 }
