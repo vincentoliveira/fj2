@@ -1,0 +1,7 @@
+parameters:
+#    fj_user.example.class: FJ\UserBundle\Example
+
+services:
+#    fj_user.example:
+#        class: %fj_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

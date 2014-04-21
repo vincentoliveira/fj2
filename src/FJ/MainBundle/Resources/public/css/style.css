@@ -1,0 +1,14 @@
+body {
+    font-family: 'Open Sans',sans-serif;
+}
+
+#header {
+    background: #01A615;
+}
+#header .container {
+    background: #01A615 url(../images/messi.png) no-repeat right;
+}
+#header .brand span { font-weight: bold; }
+#header .brand a { color: #fff; }
+#header .brand a:hover { font-style: italic; text-decoration: none; }
+#header .lead { color: #fff; }

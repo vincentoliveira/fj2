@@ -1,0 +1,18 @@
+fj_user:
+    resource: "@FJUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fj_main:
+    resource: "@FJMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    
+_security_check:
+    pattern:  /login_check
+_security_logout:
+    pattern:  /logout
+fos_facebook_channel:
+    resource: "@FOSFacebookBundle/Resources/config/routing.xml"
