@@ -7,6 +7,9 @@ security:
 
 
     providers:
+        chain_provider:
+            chain:
+                providers: [fos_userbundle, my_fos_facebook_provider]
         fos_userbundle:
             id: fos_user.user_provider.username
         my_fos_facebook_provider:
@@ -19,19 +22,13 @@ security:
             
         main:
             pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_provider: form.csrf_provider
-            logout:       true
-            anonymous:    true
-            
-        public:
-            # since anonymous is allowed users will not be forced to login
-            pattern:   ^/.*
             fos_facebook:
                 app_url: "http://apps.facebook.com/Footyjokes/"
                 server_url: "http://footyjokes.sharimg.com"
-            anonymous: true
+                login_path: _security_login
+                check_path: _security_check
+            logout:       true
+            anonymous:    true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
