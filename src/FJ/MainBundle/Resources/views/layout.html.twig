@@ -24,11 +24,11 @@
         {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         <div id="header">
             <div class="container">
+                <div class="connect-box">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}{{ app.user.username }}{% endif %}{{ facebook_login_button({'autologoutlink': true}) }}</div>
                 <h1 class="brand">
                     <a href="{{ path('homepage') }}" class="logo">Footy<span>Jokes</span></a>
                 </h1>
                 <p class="lead">Best memes about football.</p>
-                <div class="connect-box">{{ facebook_login_button({'autologoutlink': true}) }}</div>
             </div>
         </div>
         <div class="container">

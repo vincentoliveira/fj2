@@ -12,3 +12,4 @@ body {
 #header .brand a { color: #fff; }
 #header .brand a:hover { font-style: italic; text-decoration: none; }
 #header .lead { color: #fff; }
+#header .connect-box { float: right; margin: 20px; }

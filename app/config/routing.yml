@@ -10,9 +10,11 @@ fj_main:
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     
+_security_login:
+    pattern: /loginfb
+
 _security_check:
-    pattern:  /login_check
-_security_logout:
-    pattern:  /logout
+    pattern: /loginfb_check
+
 fos_facebook_channel:
     resource: "@FOSFacebookBundle/Resources/config/routing.xml"

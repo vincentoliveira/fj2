@@ -81,3 +81,14 @@ fos_facebook:
     secret: 210943688500200c851b17520c5c42aa
     cookie: true
     permissions: [email]
+
+services:
+    my.facebook.user:
+        class: FJ\UserBundle\Security\User\Provider\FacebookProvider
+        arguments:
+            facebook: "@fos_facebook.api"
+            userManager: "@fos_user.user_manager"
+            validator: "@validator"
+
+
+
