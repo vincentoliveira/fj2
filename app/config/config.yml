@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    
+parameters:
+    fos_facebook.channel.expire: 31536000 #60*60*24*365
 
 framework:
     #esi:             ~
@@ -80,7 +83,9 @@ fos_facebook:
     app_id: 507118159392605
     secret: 210943688500200c851b17520c5c42aa
     cookie: true
-    permissions: [email]
+    permissions: [basic_info]
+    channel:
+        expire: 31536000 #60*60*24*365
 
 services:
     my.facebook.user:
