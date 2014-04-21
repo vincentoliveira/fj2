@@ -24,7 +24,7 @@
         {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
         <div id="header">
             <div class="container">
-                <div class="connect-box">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}Hi {{ app.user.fullName }}{% endif %}{{ facebook_login_button({'autologoutlink': true}) }}</div>
+                <div class="connect-box">{% if is_granted("ROLE_FACEBOOK") %}Hi {{ app.user.fullName }}{% endif %}{{ facebook_login_button({'autologoutlink': true}) }}</div>
                 <h1 class="brand">
                     <a href="{{ path('homepage') }}" class="logo">Footy<span>Jokes</span></a>
                 </h1>
@@ -59,5 +59,22 @@
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
+<script>
+    function goLogIn(){
+        window.location.href = "{{ path('_security_check') }}";
+    }
+
+    function onFbInit() {
+        if (typeof(FB) != 'undefined' && FB != null ) {              
+            FB.Event.subscribe('auth.statusChange', function(response) {
+                if (response.session || response.authResponse) {
+                    setTimeout(goLogIn, 500);
+                } else {
+                    window.location.href = "{{ path('_security_logout') }}";
+                }
+            });
+        }
+    }
+</script>
     </body>
 </html>

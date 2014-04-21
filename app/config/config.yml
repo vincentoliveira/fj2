@@ -84,8 +84,6 @@ fos_facebook:
     secret: 210943688500200c851b17520c5c42aa
     cookie: true
     permissions: [basic_info]
-    channel:
-        expire: 31536000 #60*60*24*365
 
 services:
     my.facebook.user:
