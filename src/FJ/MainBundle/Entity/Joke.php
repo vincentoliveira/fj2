@@ -52,7 +52,6 @@ class Joke
      */
     private $media;
     
-
     /**
      * Get id
      *
@@ -153,5 +152,13 @@ class Joke
     public function getMedia()
     {
         return $this->media;
+    }
+    
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->setPostDate(new \DateTime());
     }
 }
