@@ -10,7 +10,7 @@ use FJ\MainBundle\Entity\Media;
 /**
  * Description of MediaService
  * 
- * @Service("fj_media_service")
+ * @Service("fj.media_service")
  */
 class MediaService
 {

@@ -3,27 +3,24 @@
 namespace FJ\MainBundle\Tests\Service;
 
 use FJ\MainBundle\Tests\FJWebTestCase;
-use FJ\MainBundle\Service\MediaService;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Tests\File\UploadedFileTest;
 
 /**
- * Description of newPHPClass
- *
- * @author CL5044
+ * Description of MediaServiceTest
  */
 class MediaServiceTest extends FJWebTestCase
 {
 
     /**
-     * @var MediaService 
+     * @var \FJ\MainBundle\Service\MediaService
      */
     protected $service;
 
     protected function setup()
     {
         parent::setup();
-        $this->service = $this->container->get('fj_media_service');
+        $this->service = $this->container->get('fj.media_service');
     }
 
     public function testImportFromFileEmpty()
