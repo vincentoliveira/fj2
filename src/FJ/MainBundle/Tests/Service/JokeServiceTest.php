@@ -82,4 +82,20 @@ class JokeServiceTest extends FJWebTestCase
         $this->assertFileEquals($testFilePath, $this->mediaService->getAbsolutePath($joke->getMedia()));
     }
 
+    public function testJokeCreationFromUrl()
+    {
+        $testFilePath = __DIR__ . '/../Fixtures/test.gif';
+        $file = new UploadedFile($testFilePath, 'original.gif', null, filesize($testFilePath), UPLOAD_ERR_OK);
+
+        $formData = array(
+            'description' => "Lorem ipsum sit amet",
+            'file_url' => 'http://www.google.com/images/srpr/logo11w.png',
+        );
+        $joke = $this->service->createJoke($formData);
+        
+        $this->assertInstanceOf('\FJ\MainBundle\Entity\Joke', $joke);
+        $this->assertEquals($formData['description'], $joke->getDescription());
+        $this->assertFileExists($this->mediaService->getAbsolutePath($joke->getMedia()));
+    }
+
 }
