@@ -39,11 +39,16 @@ class JokeService
      */
     public function createJoke(array $formData, $status = JokeStatusEnum::PENDING) {
         
-        if (!isset($formData['file']) || !isset($formData['description'])) {
+        if ((!isset($formData['file']) && !isset($formData['file_url'])) || !isset($formData['description'])) {
             return null;
         }
         
-        $media = $this->mediaService->importFromFile($formData['file']);
+        if (isset($formData['file'])) {
+            $media = $this->mediaService->importFromFile($formData['file']);
+        } else {
+            $media = $this->mediaService->importFromURL($formData['file_url']);
+        }
+        
         if ($media === null) {
             return null;
         }
