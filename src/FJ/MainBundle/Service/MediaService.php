@@ -86,6 +86,6 @@ class MediaService
     
     protected function fileIsValid(UploadedFile $file = null)
     {
-        return $file !== null && in_array($file->guessExtension(), $acceptedMimeType);
+        return $file !== null && in_array($file->getMimeType(), self::$acceptedMimeType);
     }
 }

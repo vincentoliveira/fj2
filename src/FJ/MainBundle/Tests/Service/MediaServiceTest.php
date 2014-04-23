@@ -45,7 +45,7 @@ class MediaServiceTest extends FJWebTestCase
 
     public function testImportFromFileBadExtension()
     {
-        $testFilePath = __DIR__ . '/../Fixtures/test';
+        $testFilePath = __DIR__ . '/../Fixtures/test_empty';
         $file = new UploadedFile($testFilePath, 'original', null, filesize($testFilePath), UPLOAD_ERR_OK);
 
         $media = $this->service->importFromFile($file);
