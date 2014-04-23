@@ -69,6 +69,16 @@ class MediaService
     }
     
     /**
+     * Import media from URL (downlaod)
+     * 
+     * @param string $url
+     * @return null|Media Imported media
+     */
+    public function importFromURL($url) {
+        return 0;
+    }
+    
+    /**
      * Get absolute path of a media
      * 
      * @param \FJ\MainBundle\Entity\Media $media

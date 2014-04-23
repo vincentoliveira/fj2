@@ -49,4 +49,10 @@ class MediaServiceTest extends FJWebTestCase
         $this->assertNull($media);
     }
 
+    public function testImportFromURLEmpty()
+    {
+        $media = $this->service->importFromURL(null);
+        $this->assertNull($media);
+    }
+
 }
