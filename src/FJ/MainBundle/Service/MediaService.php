@@ -14,6 +14,12 @@ use FJ\MainBundle\Entity\Media;
  */
 class MediaService
 {
+    protected static $acceptedMimeType = array(
+        'jpeg' => 'image/jpeg',
+        'jpg' => 'image/jpg',
+        'gif' => 'image/gif',
+        'png' => 'image/png',
+    );
 
     /**
      * Entity Manager
@@ -80,6 +86,6 @@ class MediaService
     
     protected function fileIsValid(UploadedFile $file = null)
     {
-        return $file !== null;
+        return $file !== null && in_array($file->guessExtension(), $acceptedMimeType);
     }
 }
