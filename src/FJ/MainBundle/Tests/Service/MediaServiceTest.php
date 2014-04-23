@@ -66,7 +66,7 @@ class MediaServiceTest extends FJWebTestCase
         $url = 'http://www.google.com/images/srpr/logo11w.png';
         $media = $this->service->importFromURL($url);
         $this->assertInstanceOf('\FJ\MainBundle\Entity\Media', $media);
-        $this->assertFileEquals($url, $this->service->getAbsolutePath($media));
+        $this->assertFileExists($this->service->getAbsolutePath($media));
     }
 
 }
