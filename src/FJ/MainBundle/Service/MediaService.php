@@ -38,7 +38,7 @@ class MediaService
      * @return null|Media Imported media
      */
     public function importFromFile(UploadedFile $file = null) {
-        if ($file === null) {
+        if (!$this->fileIsValid($file)) {
             return null;
         }
         
@@ -73,8 +73,13 @@ class MediaService
         return $this->getUploadDir() . $media->getPath();
     }
     
-    private function getUploadDir()
+    protected function getUploadDir()
     {
         return $this->kernel->getRootDir() . '/../web/media/';
+    }
+    
+    protected function fileIsValid(UploadedFile $file = null)
+    {
+        return $file !== null;
     }
 }
