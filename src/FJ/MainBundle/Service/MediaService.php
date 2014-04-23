@@ -75,7 +75,7 @@ class MediaService
      * @return null|Media Imported media
      */
     public function importFromURL($url) {
-        return 0;
+        return null;
     }
     
     /**
