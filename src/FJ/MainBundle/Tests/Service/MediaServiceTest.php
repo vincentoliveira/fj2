@@ -55,4 +55,18 @@ class MediaServiceTest extends FJWebTestCase
         $this->assertNull($media);
     }
 
+    public function testImportFromURLBad()
+    {
+        $media = $this->service->importFromURL('http://thisisabadurl.com/doesnotexist');
+        $this->assertNull($media);
+    }
+
+    public function testImportFromURL()
+    {
+        $url = 'http://www.google.com/images/srpr/logo11w.png';
+        $media = $this->service->importFromURL($url);
+        $this->assertInstanceOf('\FJ\MainBundle\Entity\Media', $media);
+        $this->assertFileEquals($url, $this->service->getAbsolutePath($media));
+    }
+
 }
