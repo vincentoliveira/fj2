@@ -4,7 +4,6 @@ namespace FJ\MainBundle\Tests\Service;
 
 use FJ\MainBundle\Tests\FJWebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Tests\File\UploadedFileTest;
 
 /**
  * Description of JokeServiceTest
